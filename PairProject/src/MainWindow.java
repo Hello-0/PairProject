@@ -6,6 +6,7 @@ public class MainWindow {
 	JFrame frame;
 	Menu menu;
 	Quiz quiz;
+	
 	MainWindow() {
 		width = DEFAULT_MONITOR_WIDTH;
 		height = DEFAULT_MONITOR_HEIGHT;
@@ -20,7 +21,7 @@ public class MainWindow {
 		frame.setVisible(true);
 	}
 	public void startQuiz() {
-		quiz = new Quiz();
+		//quiz = new Quiz();
 	}
 	public int getWidth() {
 		return width;
