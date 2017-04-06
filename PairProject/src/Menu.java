@@ -2,9 +2,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class Menu extends JPanel implements ActionListener {
+	
 	MainWindow window;
 	JTextField nameField;
+	
 	public Menu(MainWindow window) {
+		
 		this.window = window;
 		JLabel title, namePrompt;
 		//JTextField nameField;
@@ -36,6 +39,7 @@ public class Menu extends JPanel implements ActionListener {
 		
 		window.setContentArea(this);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("start"))
 			new Quiz(window, nameField.getText());
