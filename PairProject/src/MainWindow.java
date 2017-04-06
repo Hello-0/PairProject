@@ -1,15 +1,14 @@
-import java.util.*;
 import javax.swing.*;
+import java.awt.*;
 public class MainWindow {
-	
+	final int DEFAULT_MONITOR_WIDTH = 1500, DEFAULT_MONITOR_HEIGHT = 800;
+	int width, height;
 	JFrame frame;
 	Menu menu;
-	int width;
-	int height;
-	
+	Quiz quiz;
 	MainWindow() {
-		width = 1500;
-		height = 800;
+		width = DEFAULT_MONITOR_WIDTH;
+		height = DEFAULT_MONITOR_HEIGHT;
 		
 		frame = new JFrame("Impossible Quiz");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -20,24 +19,15 @@ public class MainWindow {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
-	public void startQuiz(Quiz quiz) {
-		ArrayList<Question> questions = quiz.getQuestionList();
-		this.setContentArea(questions.get(0));
+	public void startQuiz() {
+		quiz = new Quiz();
 	}
-	
-	public void setContentArea(JPanel panel) {
-		frame.setContentPane(panel);
-	}
-	
 	public int getWidth() {
 		return width;
 	}
-	
 	public int getHeight() {
 		return height;
 	}
-	
 	public static void main(String[] args) {
 		new MainWindow();
 	}
