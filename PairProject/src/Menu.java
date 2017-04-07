@@ -54,7 +54,7 @@ public class Menu extends JPanel implements ActionListener {
 			start.setFont(pix.deriveFont(40f));
 			
 		} catch (FontFormatException|IOException e) {
-				// TODO Auto-generated catch block
+				// TODO Auto-generated catch block;
 		}
 		
 		gbc = new GridBagConstraints();
@@ -75,7 +75,6 @@ public class Menu extends JPanel implements ActionListener {
 
 		gbc.gridy =4;
 		add(about,gbc);
-		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
