@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.*;
 
 public class Menu extends JPanel implements ActionListener {
@@ -45,13 +46,14 @@ public class Menu extends JPanel implements ActionListener {
 			
 			title.setFont(pix.deriveFont(60f));
 			
-			namePrompt.setFont(pix.deriveFont(40f));
+			namePrompt.setFont(pix.deriveFont(35f));
 			
 			nameField.setFont(pix.deriveFont(40f));
 			nameField.setMaximumSize(new Dimension(window.getWidth() / 2, 24));
 			nameField.setHorizontalAlignment(SwingConstants.CENTER);;
 			
-			start.setFont(pix.deriveFont(40f));
+			start.setFont(pix.deriveFont(50f));
+			about.setFont(pix.deriveFont(50f));
 			
 		} catch (FontFormatException|IOException e) {
 				// TODO Auto-generated catch block;
@@ -59,21 +61,29 @@ public class Menu extends JPanel implements ActionListener {
 		
 		gbc = new GridBagConstraints();
 		gbc.insets = new Insets(5, 5, 5, 5);
-		gbc.weighty =0.01;
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		gbc.gridwidth = GridBagConstraints.CENTER;
 		
+		gbc.weighty =0.01;
+	
+		gbc.gridx =1;
 		gbc.gridy =0;
 		add(title,gbc);
 		
+		gbc.gridx =1;
 		gbc.gridy =1;
 		add(namePrompt,gbc);
 		
+		gbc.gridx =1;
 		gbc.gridy =2;
 		add(nameField,gbc);
-
+		
+		gbc.gridx =0;
 		gbc.gridy =3;
 		add(start, gbc);
-
-		gbc.gridy =4;
+		
+		gbc.gridx = 2;
+		gbc.gridy = 3;
 		add(about,gbc);
 	}
 	
