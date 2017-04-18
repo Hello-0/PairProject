@@ -3,10 +3,12 @@ public class Player {
 	int lives;
 	public Player(String name) {
 		this.name = name;
-		
 	}
 	public void loseLife() {
 		lives -= 1;
+	}
+	public String getName() {
+		return name;
 	}
 	public int getLives() {
 		return lives;

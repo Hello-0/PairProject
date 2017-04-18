@@ -7,25 +7,42 @@ public class Quiz {
 	int questionNum;
 	ArrayList<Question> questions;
 	
-	public Quiz(MainWindow window, String name) {
+	public Quiz(MainWindow window, Player player) {
 		this.window = window;
-		player = new Player(name);
+		this.player = player;
 		
 		questions = new ArrayList<Question>();
 		addQuestions(questions);
 		
-		window.startQuiz(this);
+		//window.startQuiz(this);
 	}
-	
 	private void addQuestions(ArrayList<Question> questions) {
-		questions.add(new Question1(window));
+		questions.add(new MultipleChoiceQuestions(window));
+		questions.add(new SpecialQuestion1(window));
 		//add more when we make
 	}
-	
-	private void nextQuestion() {
-		//switch to next question
+	public void start() {
+		questionNum = 0;
+		window.setContentPane(questions.get(questionNum));
 	}
-	
+	private void nextQuestion() {
+		try {
+			questionNum++;
+			window.setContentPane(questions.get(questionNum));
+		} catch (Exception e) {
+			//if runs out of questions then win
+			setWinPanel();
+		}
+	}
+	private void setWinPanel() {
+		
+	}
+	private void setLosePanel() {
+		
+	}
+	public Player getPlayer() {
+		return player;
+	}
 	public ArrayList<Question> getQuestionList() {
 		return questions;
 	}

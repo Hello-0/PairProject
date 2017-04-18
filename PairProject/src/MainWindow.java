@@ -1,22 +1,17 @@
 import javax.swing.*;
-
 import java.awt.*;
 public class MainWindow {
-
-	double width, height;
+	final int DEFAULT_MONITOR_WIDTH = 1500, DEFAULT_MONITOR_HEIGHT = 800;
+	int width, height;
 	JFrame frame;
-	Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
 	Menu menu;
 	Quiz quiz;
-	final double DEFAULT_MONITOR_WIDTH = scrn.width*(0.9), 
-			  DEFAULT_MONITOR_HEIGHT = scrn.height*(0.9);
-	
+	Player player;
 	MainWindow() {
 		width = DEFAULT_MONITOR_WIDTH;
 		height = DEFAULT_MONITOR_HEIGHT;
 		
 		frame = new JFrame("Impossible Quiz");
-		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menu = new Menu(this);
@@ -25,14 +20,23 @@ public class MainWindow {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	public void startQuiz() {
-		//quiz = new Quiz();
+	public void startQuiz(String name) {
+		player = new Player(name);
+		quiz = new Quiz(this, player);
+		quiz.start();
+	}
+	public void showAbout() {
+		String about = "we can fuck around with this later";
+		JOptionPane.showMessageDialog(frame, about);
+	}
+	public void setContentPane(JPanel panel) {
+		frame.setContentPane(panel);
 	}
 	public int getWidth() {
-		return (int)width;
+		return width;
 	}
 	public int getHeight() {
-		return (int)height;
+		return height;
 	}
 	public static void main(String[] args) {
 		new MainWindow();
