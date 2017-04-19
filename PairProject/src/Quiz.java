@@ -13,11 +13,9 @@ public class Quiz {
 		
 		questions = new ArrayList<Question>();
 		addQuestions(questions);
-		
-		//window.startQuiz(this);
 	}
 	private void addQuestions(ArrayList<Question> questions) {
-		questions.add(new MultipleChoiceQuestions(window));
+		questions.add(new MultipleChoiceQuestion(window));
 		questions.add(new SpecialQuestion1(window));
 		//add more when we make
 	}

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 public class MainWindow {
 	final int DEFAULT_MONITOR_WIDTH = 1500, DEFAULT_MONITOR_HEIGHT = 800;
 	int width, height;
