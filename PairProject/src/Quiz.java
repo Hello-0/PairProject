@@ -1,12 +1,9 @@
 import java.util.*;
-
 public class Quiz {
-	
 	MainWindow window;
 	Player player;
 	int questionNum;
 	ArrayList<Question> questions;
-	
 	public Quiz(MainWindow window, Player player) {
 		this.window = window;
 		this.player = player;
@@ -15,9 +12,9 @@ public class Quiz {
 		addQuestions(questions);
 	}
 	private void addQuestions(ArrayList<Question> questions) {
-		questions.add(new MultipleChoiceQuestion(window));
-		questions.add(new SpecialQuestion1(window));
-		//add more when we make
+		questions.add(new MultipleChoiceQuestion(window, this));
+		questions.add(new SpecialQuestion1(window, this));
+			//add more when we make
 	}
 	public void start() {
 		questionNum = 0;
@@ -28,7 +25,7 @@ public class Quiz {
 			questionNum++;
 			window.setContentPane(questions.get(questionNum));
 		} catch (Exception e) {
-			//if runs out of questions then win
+				//if runs out of questions then win
 			setWinPanel();
 		}
 	}

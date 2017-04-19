@@ -6,19 +6,19 @@ public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d;
 	JLabel questionL, aL, bL, cL, dL;
 		// L for label!
-	public MultipleChoiceQuestion(MainWindow window) {
-		super(window);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz) {
+		super(window, quiz);
 	}
-	public MultipleChoiceQuestion(MainWindow window, String question) {
-		this(window);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question) {
+		this(window, quiz);
 		setQuestion(question);
 	}
-	public MultipleChoiceQuestion(MainWindow window, String question, String a, String b, String c, String d) {
-		this(window, question);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question, String a, String b, String c, String d) {
+		this(window, quiz, question);
 		setChoices(a, b, c, d);
 	}
-	public MultipleChoiceQuestion(MainWindow window, String question, String a, String b, String c, String d, String answer) {
-		this(window, question, a, b, c, d);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question, String a, String b, String c, String d, String answer) {
+		this(window, quiz, question, a, b, c, d);
 		setAnswer(answer);
 	}
 	public void setQuestion(String question) {
