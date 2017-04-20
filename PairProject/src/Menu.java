@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Menu extends JPanel implements ActionListener {
 	MainWindow window;
 	JTextField nameField;
-	/*
+	
 	public Menu(MainWindow window) {
 		this.window = window;
 		JLabel title, namePrompt;
@@ -98,7 +98,7 @@ public class Menu extends JPanel implements ActionListener {
 			about.setFont(pix.deriveFont(50f));
 		} catch (FontFormatException|IOException e) {}
 	}
-	*/
+	
 	/**
 	public Menu(MainWindow window) {
 		JLabel title, namePrompt;

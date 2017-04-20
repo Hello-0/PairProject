@@ -4,8 +4,8 @@ public class MainWindow {
 	int width, height;
 	JFrame frame;
 	Menu menu;
-	Quiz quiz;
 	Player player;
+	Quiz quiz;
 	MainWindow() {
 		width = DEFAULT_MONITOR_WIDTH;
 		height = DEFAULT_MONITOR_HEIGHT;
