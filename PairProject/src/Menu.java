@@ -2,9 +2,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.Timer;
+
 public class Menu extends JPanel implements ActionListener {
 	MainWindow window;
 	JTextField nameField;
+	int Color1 = 0x00FFFF;
 	
 	public Menu(MainWindow window) {
 		this.window = window;
@@ -13,13 +16,23 @@ public class Menu extends JPanel implements ActionListener {
 		JPanel buttonPanel;
 		GridBagConstraints gbc;
 		
+		Timer tmr = new Timer(20, new ActionListener(){
+    		
+			public void actionPerformed(ActionEvent e){
+
+				Color1 = gradient(Color1);
+			}
+		});
+		
+		tmr.start();
+	
 		setBackground(Color.WHITE);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
 		
 		title = new JLabel("Impossible Quiz");
-		title.setFont(new Font("Arial", Font.BOLD, 120));
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
+		title.setForeground(new Color(Color1));
 		add(title);
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 4)));
 		
@@ -86,7 +99,7 @@ public class Menu extends JPanel implements ActionListener {
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf")));
 			Font pix = Font.createFont(Font.TRUETYPE_FONT, new File("res/PressStart2P.ttf"));
 			
-			title.setFont(pix.deriveFont(60f));
+			title.setFont(pix.deriveFont(50f));
 			
 			namePrompt.setFont(pix.deriveFont(35f));
 			
@@ -97,6 +110,30 @@ public class Menu extends JPanel implements ActionListener {
 			start.setFont(pix.deriveFont(50f));
 			about.setFont(pix.deriveFont(50f));
 		} catch (FontFormatException|IOException e) {}
+	}
+	
+	public int gradient(int color){
+		int r = color & 0xFF0000;
+		int g = color & 0x00FF00;
+		int b = color & 0x0000FF;
+		if(r == 0xFF0000 && g != 0x00FF00 && b== 0x000000)
+		{
+			color += 0x000F00;
+		}else if(r != 0x000000 && g == 0x00FF00 && b== 0x000000){
+			color -= 0x0F0000;
+			
+		}else if(r == 0x000000 && b != 0x0000FF){
+			color -= 0x000F00;
+			color += 0x00000F;
+			
+		}else if(r != 0xFF0000){
+			color += 0x0F0000;
+			
+		}else{
+			
+			color -= 0x00000F;
+		}
+		return color;
 	}
 	
 	/**

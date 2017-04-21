@@ -1,6 +1,6 @@
 import javax.swing.*;
 public class MainWindow {
-	final int DEFAULT_MONITOR_WIDTH = 1500, DEFAULT_MONITOR_HEIGHT = 800;
+	final int DEFAULT_MONITOR_WIDTH = 850, DEFAULT_MONITOR_HEIGHT = 600;
 	int width, height;
 	JFrame frame;
 	Menu menu;
@@ -18,6 +18,7 @@ public class MainWindow {
 		
 		frame.pack();
 		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 	}
 	public void startQuiz(String name) {
 		player = new Player(name);
