@@ -40,9 +40,11 @@ public class Question1 extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton1.setText("31536000");
+        jButton1.setBackground(new java.awt.Color(247, 150, 221));
         jButton1.setPreferredSize(new java.awt.Dimension(45, 25));
 
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(247, 150, 221));
         jButton2.setText("12");
         jButton2.setToolTipText("");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -58,13 +60,14 @@ public class Question1 extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setText("1");
+        jButton4.setBackground(new java.awt.Color(247, 150, 221));
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 220, 50));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("LIVES:");
 
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Zhi Wang\\Pictures\\1.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("res/x.png")); // NOI18N
         jButton5.setContentAreaFilled(false);
         jButton5.setMaximumSize(new java.awt.Dimension(20, 20));
         jButton5.setMinimumSize(new java.awt.Dimension(20, 20));

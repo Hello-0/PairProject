@@ -7,25 +7,17 @@ import javax.swing.Timer;
 public class Menu extends JPanel implements ActionListener {
 	MainWindow window;
 	JTextField nameField;
-	int Color1 = 0x00FFFF;
+	private JLabel title;
+	int Color1 = 0xFFFFFF;
 	
 	public Menu(MainWindow window) {
 		this.window = window;
-		JLabel title, namePrompt;
+		JLabel namePrompt;
 		JButton start, about;
 		JPanel buttonPanel;
 		GridBagConstraints gbc;
 		
-		Timer tmr = new Timer(20, new ActionListener(){
-    		
-			public void actionPerformed(ActionEvent e){
-
-				Color1 = gradient(Color1);
-			}
-		});
 		
-		tmr.start();
-	
 		setBackground(Color.WHITE);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
@@ -36,6 +28,17 @@ public class Menu extends JPanel implements ActionListener {
 		add(title);
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 4)));
 		
+		Timer tmr = new Timer(50, new ActionListener(){
+    		
+			public void actionPerformed(ActionEvent e){
+
+				Color1 = gradient(Color1);
+				title.setForeground(new Color(Color1));
+			}
+		});
+		
+		tmr.start();
+	
 		namePrompt = new JLabel("What is your name?");
 		namePrompt.setFont(new Font("Arial", Font.PLAIN, 20));
 		namePrompt.setAlignmentX(Component.CENTER_ALIGNMENT);
