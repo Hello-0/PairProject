@@ -27,11 +27,13 @@ public class MouseTest implements MouseMotionListener {
 		frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 	    Paint paint = new Paint();
 	    paint.setBackground(Color.BLUE);
+	    r.mouseMove(1175, 415);
 	    frame.add(paint);
 	    frame.addMouseMotionListener(new MouseAdapter() {
             public void mouseMoved(MouseEvent me) {
                 // Get x,y and store them
             	if(r.getPixelColor(me.getXOnScreen(),me.getYOnScreen()).getBlue() == Color.BLUE.getBlue()){
+            	//	frame.dispose();
             		System.out.println(Color.BLUE);
             		System.out.println(r.getPixelColor(me.getXOnScreen(), me.getYOnScreen()));
             		System.out.println(me.getX() + " " + me.getY());

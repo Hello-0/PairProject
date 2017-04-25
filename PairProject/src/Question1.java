@@ -1,24 +1,28 @@
 import javax.swing.*;
 
-public class Question1 extends javax.swing.JFrame {
+public class Question1 extends Question{
 
-    /**
+    public Question1(MainWindow window, Quiz quiz, int questionNum) {
+		super(window, quiz, questionNum);
+		//createPanel();
+		// TODO Auto-generated constructor stub
+	}
+	/**
      * Creates new form Question1
      */
-	 JButton jButton1;
- 	 JButton jButton2;
- 	 JButton jButton3;
- 	 JButton jButton4;
- 	 JButton jButton5;
- 	 JLabel jLabel1;
- 	 JLabel jLabel2;
+    MainWindow Window = new MainWindow();
+    Player play = new Player("Z");
+    Quiz quiz = new Quiz(window,play);
+	JButton jButton1;
+ 	JButton jButton2;
+ 	JButton jButton3;
+ 	JButton jButton4;
+ 	JButton jButton5;
+ 	JLabel jLabel1;
+ 	JLabel jLabel2;
 	
-    public Question1() {
-        initComponents();
-  
-    }
-
-    private void initComponents() {
+ 	public void createPanel() {
+		
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -28,15 +32,11 @@ public class Question1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(850, 600));
-
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 45)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("How many seconds in a year?");
-        jLabel1.setToolTipText("");
+    
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton1.setText("31536000");
@@ -46,17 +46,10 @@ public class Question1 extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton2.setBackground(new java.awt.Color(247, 150, 221));
         jButton2.setText("12");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
+  
         jButton3.setBackground(new java.awt.Color(247, 150, 221));
         jButton3.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jButton3.setText("60");
-        jButton3.setPreferredSize(new java.awt.Dimension(45, 25));
 
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setText("1");
@@ -66,15 +59,9 @@ public class Question1 extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(25, 220, 50));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("LIVES:");
-
-        jButton5.setIcon(new javax.swing.ImageIcon("res/x.png")); // NOI18N
-        jButton5.setContentAreaFilled(false);
-        jButton5.setMaximumSize(new java.awt.Dimension(20, 20));
-        jButton5.setMinimumSize(new java.awt.Dimension(20, 20));
-        jButton5.setPreferredSize(new java.awt.Dimension(40, 40));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(new Question1(window,quiz,1));
+        setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -116,22 +103,5 @@ public class Question1 extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
-    }
-
-    public static void main(String args[]) {
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Question1().setVisible(true);
-            }
-        });
-    }
+	}
 }
