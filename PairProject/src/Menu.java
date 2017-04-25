@@ -2,8 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
-import javax.swing.Timer;
-
 public class Menu extends JPanel implements ActionListener {
 	MainWindow window;
 	JTextField nameField;
@@ -23,6 +21,7 @@ public class Menu extends JPanel implements ActionListener {
 		setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
 		
 		title = new JLabel("Impossible Quiz");
+		title.setFont(new Font("Comic Sans MS", Font.PLAIN, 100));
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
 		title.setForeground(new Color(Color1));
 		add(title);
@@ -40,13 +39,13 @@ public class Menu extends JPanel implements ActionListener {
 		tmr.start();
 	
 		namePrompt = new JLabel("What is your name?");
-		namePrompt.setFont(new Font("Arial", Font.PLAIN, 20));
+		namePrompt.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		namePrompt.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(namePrompt);
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 15)));
 		
 		nameField = new JTextField(24);
-		nameField.setFont(new Font("Arial", Font.PLAIN, 16));
+		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		nameField.setMaximumSize(new Dimension(window.getWidth() / 2, 24));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
 		add(nameField);
@@ -59,7 +58,7 @@ public class Menu extends JPanel implements ActionListener {
 		buttonPanel.setLayout(new GridBagLayout());
 		
 		start = new JButton("Start!");
-		start.setFont(new Font("Arial", Font.PLAIN, 16));
+		start.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		start.addActionListener(this);
 		start.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
@@ -78,7 +77,7 @@ public class Menu extends JPanel implements ActionListener {
 		
 		gbc.gridy = 1;
 		about = new JButton("About?");
-		about.setFont(new Font("Arial", Font.PLAIN, 16));
+		about.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		about.addActionListener(this);
 		about.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {

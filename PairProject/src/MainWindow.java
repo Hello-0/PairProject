@@ -1,14 +1,14 @@
 import javax.swing.*;
 public class MainWindow {
-	final int DEFAULT_MONITOR_WIDTH = 850, DEFAULT_MONITOR_HEIGHT = 600;
+	final int DEFAULT_WIDTH = 850, DEFAULT_HEIGHT = 600;
 	int width, height;
 	JFrame frame;
 	Menu menu;
 	Player player;
 	Quiz quiz;
 	MainWindow() {
-		width = DEFAULT_MONITOR_WIDTH;
-		height = DEFAULT_MONITOR_HEIGHT;
+		width = DEFAULT_WIDTH;
+		height = DEFAULT_HEIGHT;
 		
 		frame = new JFrame("Impossible Quiz");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +31,7 @@ public class MainWindow {
 	}
 	public void setContentPane(JPanel panel) {
 		frame.setContentPane(panel);
+		frame.pack();
 	}
 	public int getWidth() {
 		return width;

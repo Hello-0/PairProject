@@ -7,8 +7,8 @@ public class MultipleChoiceQuestion extends Question {
 	JLabel questionL, aL, bL, cL, dL;
 		// L for label!
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
-	public MultipleChoiceQuestion(MainWindow window, Quiz quiz) {
-		super(window, quiz);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
+		super(window, quiz, questionNum);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		/*
 		setQuestion(question);
@@ -16,26 +16,31 @@ public class MultipleChoiceQuestion extends Question {
 		setAnswer(answer);
 		*/
 	}
-	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question) {
-		this(window, quiz);
+	public String getQuestion() {
+		return question;
+	}
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum, String question) {
+		this(window, quiz, questionNum);
 		questionInputted = true;
 		setQuestion(question);
 	}
-	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question, String a, String b, String c, String d) {
-		this(window, quiz, question);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum, String question, String a, String b, String c, String d) {
+		this(window, quiz, questionNum, question);
 		choicesInputted = true;
 		setChoices(a, b, c, d);
 	}
-	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, String question, String a, String b, String c, String d, String answer) {
-		this(window, quiz, question, a, b, c, d);
+	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum, String question, String a, String b, String c, String d, String answer) {
+		this(window, quiz, questionNum, question, a, b, c, d);
 		answerInputted = true;
 		setAnswer(answer);
 	}
 	public void setQuestion(String question) {
 		this.question = question;
 		questionL = new JLabel(question);
+		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 	}
 	public void setChoices(String a, String b, String c, String d) {
+		System.out.println("settin choices");
 		this.a = a;
 		this.b = b;
 		this.c = c;
@@ -46,6 +51,7 @@ public class MultipleChoiceQuestion extends Question {
 		dL = new JLabel(d);
 	}
 	public void setAnswer(String answer) {
+		System.out.println("settin answers");
 		if (answerInputted)
 			switch (answer) {
 				case "a":	addMouseListeners(aL);	break;
@@ -93,23 +99,41 @@ public class MultipleChoiceQuestion extends Question {
 			});
 	}
 	public void createPanel() {
+		JLabel questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
+		JLabel x = new JLabel("res/x.png");
+		JPanel choicesPanel = new JPanel(new GridLayout());
+		
 		if (!answerInputted) {
-			answer = "a";
-			setAnswer(answer);
 			if (!choicesInputted) {
+				if (!questionInputted) {
+					question = "Question Not Inputted";
+					setQuestion(question);
+				}
 				a = "A";
 				b = "B";
 				c = "C";
 				d = "D";
 				setChoices(a, b, c, d);
-				if (!questionInputted) {
-					question = "Question Not Inputted";
-					setQuestion(question);
-				}
 			}
+			answer = "a";
+			setAnswer(answer);
 		}
 		
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
+		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		questionNum.setForeground(Color.BLUE);
+		questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
+		add(questionNum);
+		
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 10)));
+		questionL.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(questionL);
+		
+		//choicesPanel:
+		//2x2 grid like
+		//  	a  b
+		//      c  d
+		//add choicesPanel to main JPanel after
 	}
 }

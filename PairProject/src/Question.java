@@ -3,10 +3,12 @@ import javax.swing.*;
 public abstract class Question extends JPanel {
 	MainWindow window;
 	Quiz quiz;
+	int questionNum;
 	boolean correct, pass;
-	public Question(MainWindow window, Quiz quiz) {
+	public Question(MainWindow window, Quiz quiz, int questionNum) {
 		this.window = window;
 		this.quiz = quiz;
+		this.questionNum = questionNum;
 		pass = false;
 		
 		setBackground(Color.WHITE);
