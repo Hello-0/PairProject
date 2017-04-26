@@ -4,8 +4,8 @@ import java.awt.event.*;
 import javax.swing.*;
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
-	JLabel questionL, aL, bL, cL, dL;
-		// L for label!
+	JLabel questionL;
+	JButton aB, bB, cB, dB;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
 		super(window, quiz, questionNum);
@@ -40,37 +40,35 @@ public class MultipleChoiceQuestion extends Question {
 		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 	}
 	public void setChoices(String a, String b, String c, String d) {
-		System.out.println("settin choices");
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
-		aL = new JLabel(a);
-		bL = new JLabel(b);
-		cL = new JLabel(c);
-		dL = new JLabel(d);
+		aB = new JButton(a);
+		bB = new JButton(b);
+		cB = new JButton(c);
+		dB = new JButton(d);
 	}
 	public void setAnswer(String answer) {
-		System.out.println("settin answers");
 		if (answerInputted)
 			switch (answer) {
-				case "a":	addMouseListeners(aL);	break;
-				case "b":	addMouseListeners(bL);	break;
-				case "c":	addMouseListeners(cL);	break;
-				case "d":	addMouseListeners(dL);	break;
+				case "a":	addMouseListeners(aB);	break;
+				case "b":	addMouseListeners(bB);	break;
+				case "c":	addMouseListeners(cB);	break;
+				case "d":	addMouseListeners(dB);	break;
 			}
 		else
-			addMouseListeners(aL);
+			addMouseListeners(aB);
 	}
-	private void addMouseListeners(JLabel label) {
-		ArrayList<JLabel> answerLs = new ArrayList<JLabel>();
-		answerLs.add(aL);
-		answerLs.add(bL);
-		answerLs.add(cL);
-		answerLs.add(dL);
-		answerLs.remove(label);
+	private void addMouseListeners(JButton button) {
+		ArrayList<JButton> answerBs = new ArrayList<JButton>();
+		answerBs.add(aB);
+		answerBs.add(bB);
+		answerBs.add(cB);
+		answerBs.add(dB);
+		answerBs.remove(button);
 		
-		label.addMouseListener(new MouseListener() {
+		button.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
 				correct = true;
 			}
@@ -83,8 +81,8 @@ public class MultipleChoiceQuestion extends Question {
 			public void mousePressed(MouseEvent e) {}
 			public void mouseReleased(MouseEvent e) {}
 		});
-		for (int i = 0; i < answerLs.size(); i++)
-			answerLs.get(i).addMouseListener(new MouseListener() {
+		for (int i = 0; i < answerBs.size(); i++)
+			answerBs.get(i).addMouseListener(new MouseListener() {
 				public void mouseClicked(MouseEvent e) {
 					correct = false;
 				}
@@ -99,9 +97,10 @@ public class MultipleChoiceQuestion extends Question {
 			});
 	}
 	public void createPanel() {
-		JLabel questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
+		JLabel questionNum;
 		JLabel x = new JLabel("res/x.png");
-		JPanel choicesPanel = new JPanel(new GridLayout());
+		ArrayList<JButton> answerBs = new ArrayList<JButton>();
+		JPanel choicesPanel;
 		
 		if (!answerInputted) {
 			if (!choicesInputted) {
@@ -121,19 +120,33 @@ public class MultipleChoiceQuestion extends Question {
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
+			//fix questionNum alignment
+		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionNum.setForeground(Color.BLUE);
 		questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
 		add(questionNum);
 		
-		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 10)));
+		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		questionL.setForeground(Color.BLUE);
 		questionL.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(questionL);
 		
-		//choicesPanel:
-		//2x2 grid like
-		//  	a  b
-		//      c  d
-		//add choicesPanel to main JPanel after
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 6)));
+		answerBs.add(aB);
+		answerBs.add(bB);
+		answerBs.add(cB);
+		answerBs.add(dB);
+		for (JButton button : answerBs) {
+			button.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+			button.setBackground(new Color(247, 150, 221));
+			button.setPreferredSize(new Dimension(window.getWidth() * 2 / 5, window.getHeight() / 8));
+		}
+		
+		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
+		choicesPanel.setBackground(Color.WHITE);
+		for (JButton button : answerBs)
+			choicesPanel.add(button);
+		add(choicesPanel);
 	}
 }
