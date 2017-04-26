@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
-	JLabel questionL;
+	JLabel questionL,lives;
 	JButton aB, bB, cB, dB;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
@@ -127,12 +127,13 @@ public class MultipleChoiceQuestion extends Question {
 		questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
 		add(questionNum);
 		
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
 		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionL.setForeground(Color.BLUE);
 		questionL.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(questionL);
 		
-		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 6)));
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 5)));
 		answerBs.add(aB);
 		answerBs.add(bB);
 		answerBs.add(cB);
@@ -143,10 +144,19 @@ public class MultipleChoiceQuestion extends Question {
 			button.setPreferredSize(new Dimension(window.getWidth() * 2 / 5, window.getHeight() / 8));
 		}
 		
+		lives = new JLabel("LIVES:");
+		lives.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+		lives.setForeground(new java.awt.Color(25, 220, 50));
+		lives.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		
 		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
 		choicesPanel.setBackground(Color.WHITE);
 		for (JButton button : answerBs)
 			choicesPanel.add(button);
+		choicesPanel.add(lives);
+	
+	
 		add(choicesPanel);
+		
 	}
 }

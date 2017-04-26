@@ -15,7 +15,7 @@ public class Quiz {
 		addQuestions();
 	}
 	private void addQuestions() {
-		MultipleChoiceQuestion mc1 = new MultipleChoiceQuestion(window, this, 1, "test?", "a", "b", "c", "d", "b");
+		MultipleChoiceQuestion mc1 = new MultipleChoiceQuestion(window, this, 1, "How many seconds in a year?", "a", "b", "c", "d", "b");
 		mc1.createPanel();
 		MultipleChoiceQuestion mc2 = new MultipleChoiceQuestion(window, this, 2, "test2!!");
 		mc2.createPanel();

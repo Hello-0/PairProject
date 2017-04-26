@@ -64,7 +64,7 @@ public class Question2 extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jButton4.setText("Wait, What?");
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 45)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 220, 50));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("LIVES:");
