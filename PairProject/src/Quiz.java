@@ -1,4 +1,6 @@
 import java.util.*;
+import java.awt.*;
+import javax.swing.*;
 public class Quiz {
 	MainWindow window;
 	Player player;
@@ -15,50 +17,54 @@ public class Quiz {
 		addQuestions();
 	}
 	private void addQuestions() {
-		MultipleChoiceQuestion mc1 = new MultipleChoiceQuestion(window, this, 1, "How many seconds in a year?", "a", "b", "c", "d", "b");
+		MultipleChoiceQuestion mc1 = new MultipleChoiceQuestion(window, this, 1, "How many seconds in a year?", "31536000", "12", "60", "1", "b");
 		mc1.createPanel();
-		MultipleChoiceQuestion mc2 = new MultipleChoiceQuestion(window, this, 2, "test2!!");
+		MultipleChoiceQuestion mc2 = new MultipleChoiceQuestion(window, this, 2, "I did, did I?", "No, I didn't", "Of course I did!", "He did, eh?", "Wait, what?", "c");
 		mc2.createPanel();
+		MultipleChoiceQuestion mc3 = new MultipleChoiceQuestion(window, this, 3, "How many letters in your name?",
+				"8", Integer.toString(player.getName().length()), "I forget my name", "Is this a trick question?", "a");
+		mc3.createPanel();
 		
 		mcQuestions.add(mc1);
 		mcQuestions.add(mc2);
-		//questions.add(new SpecialQuestion1(window, this));
+		mcQuestions.add(mc3);
+		//questions.add(new SpecialQuestion1(window, this, 3));
 			//add more when we make
 		
-		
 		//put all questions in an order in questions arraylist
-		for (int i = 0; mcQuestions.size() > 0 && specQuestions.size() > 0; i++)
-			if (i % 3 != 2)
-				questions.add(mcQuestions.remove(0));
-			else
-				questions.add(specQuestions.remove(0));
-		if (mcQuestions.size() > 0)
-			while (mcQuestions.size() > 0)
-				questions.add(mcQuestions.remove(0));
-		else
-			while (specQuestions.size() > 0)
-				questions.add(specQuestions.remove(0));
+		questions = new ArrayList<Question>();
+		for (int i = 0; i < mcQuestions.size() + specQuestions.size(); i++)
+			if (mcQuestions.size() > i && mcQuestions.get(i).getQuestionNum() == i + 1)
+				questions.add(mcQuestions.get(i));
+			else if (specQuestions.size() > i && specQuestions.get(i).getQuestionNum() == i + 1)
+				questions.add(specQuestions.get(i));
+		System.out.println("addqs:\t"+questions.size());
 	}
 	public void start() {
 		questionNum = 0;
-		//System.out.println(mcQuestions.get(questionNum).getQuestion());
-		System.out.println("question#"+questionNum);
 		window.setContentPane(questions.get(questionNum));
 	}
-	private void nextQuestion() {
+	public void nextQuestion() {
 		try {
 			questionNum++;
 			window.setContentPane(questions.get(questionNum));
 		} catch (Exception e) {
-				//if runs out of questions then win
 			setWinPanel();
 		}
 	}
 	private void setWinPanel() {
+		JPanel winPanel = new JPanel();
+		winPanel.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
+		winPanel.setBackground(Color.BLUE);
 		
+		window.setContentPane(winPanel);
 	}
-	private void setLosePanel() {
+	public void setLosePanel() {
+		JPanel losePanel = new JPanel();
+		losePanel.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
+		losePanel.setBackground(Color.RED);
 		
+		window.setContentPane(losePanel);
 	}
 	public Player getPlayer() {
 		return player;

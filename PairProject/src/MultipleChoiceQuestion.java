@@ -1,6 +1,7 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
@@ -10,14 +11,6 @@ public class MultipleChoiceQuestion extends Question {
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
 		super(window, quiz, questionNum);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		/*
-		setQuestion(question);
-		setChoices(a, b, c, d);
-		setAnswer(answer);
-		*/
-	}
-	public String getQuestion() {
-		return question;
 	}
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum, String question) {
 		this(window, quiz, questionNum);
@@ -70,7 +63,7 @@ public class MultipleChoiceQuestion extends Question {
 		
 		button.addMouseListener(new MouseListener() {
 			public void mouseClicked(MouseEvent e) {
-				correct = true;
+				quiz.nextQuestion();
 			}
 			public void mouseEntered(MouseEvent e) {
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -84,7 +77,9 @@ public class MultipleChoiceQuestion extends Question {
 		for (int i = 0; i < answerBs.size(); i++)
 			answerBs.get(i).addMouseListener(new MouseListener() {
 				public void mouseClicked(MouseEvent e) {
-					correct = false;
+					loseLife();
+					if (lose())
+						quiz.setLosePanel();
 				}
 				public void mouseEntered(MouseEvent e) {
 					setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -120,12 +115,17 @@ public class MultipleChoiceQuestion extends Question {
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-			//fix questionNum alignment
+			//fix questionNum alignment FUCK THIS SHIT
+		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p.setPreferredSize(new Dimension(window.getWidth(), 8));
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionNum.setForeground(Color.BLUE);
-		questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
-		add(questionNum);
+		//questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
+		p.setAlignmentX(Component.LEFT_ALIGNMENT);
+		//add(questionNum);
+		p.add(questionNum);
+		add(p);
 		
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
 		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
@@ -133,7 +133,7 @@ public class MultipleChoiceQuestion extends Question {
 		questionL.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(questionL);
 		
-		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 5)));
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 6)));
 		answerBs.add(aB);
 		answerBs.add(bB);
 		answerBs.add(cB);
@@ -144,19 +144,20 @@ public class MultipleChoiceQuestion extends Question {
 			button.setPreferredSize(new Dimension(window.getWidth() * 2 / 5, window.getHeight() / 8));
 		}
 		
-		lives = new JLabel("LIVES:");
-		lives.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
-		lives.setForeground(new java.awt.Color(25, 220, 50));
-		lives.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-		
 		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
 		choicesPanel.setBackground(Color.WHITE);
 		for (JButton button : answerBs)
 			choicesPanel.add(button);
-		choicesPanel.add(lives);
-	
-	
 		add(choicesPanel);
 		
+		lives = new JLabel("LIVES:");
+		lives.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		lives.setForeground(new Color(25, 220, 50));
+		lives.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(lives);
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 16)));
+	}
+	public String getQuestion() {
+		return question;
 	}
 }
