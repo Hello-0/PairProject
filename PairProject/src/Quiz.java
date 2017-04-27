@@ -1,15 +1,28 @@
 import java.util.*;
 import java.awt.*;
+
 import javax.swing.*;
 public class Quiz {
 	MainWindow window;
 	Player player;
 	int questionNum;
+	JLabel livesLabel = new JLabel("LIVES:");
+	ImageIcon x;
+	JLabel livesCounter;
+	int lives;
 	ArrayList<MultipleChoiceQuestion> mcQuestions;
 	ArrayList<Question> specQuestions, questions;
 	public Quiz(MainWindow window, Player player) {
 		this.window = window;
 		this.player = player;
+		
+		livesLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
+		livesLabel.setForeground(new java.awt.Color(25, 220, 50));
+		
+		x = new ImageIcon("res/x.png");
+		Image img = x.getImage().getScaledInstance(50,50, java.awt.Image.SCALE_SMOOTH);
+		livesCounter.setIcon(new ImageIcon(img));
+
 		
 		questions = new ArrayList<Question>();
 		mcQuestions = new ArrayList<MultipleChoiceQuestion>();
@@ -42,12 +55,17 @@ public class Quiz {
 	}
 	public void start() {
 		questionNum = 0;
+		livesLabel.setAlignmentX(SwingConstants.LEFT);
+		questions.get(questionNum).add(livesLabel);
+		questions.get(questionNum).add(livesCounter);
 		window.setContentPane(questions.get(questionNum));
+
 	}
 	public void nextQuestion() {
 		try {
 			questionNum++;
 			window.setContentPane(questions.get(questionNum));
+			
 		} catch (Exception e) {
 			setWinPanel();
 		}
@@ -66,6 +84,7 @@ public class Quiz {
 		
 		window.setContentPane(losePanel);
 	}
+	
 	public Player getPlayer() {
 		return player;
 	}

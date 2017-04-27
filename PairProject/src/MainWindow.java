@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+
 import javax.swing.*;
 public class MainWindow {
 	final int DEFAULT_WIDTH = 850, DEFAULT_HEIGHT = 600;
@@ -30,9 +32,11 @@ public class MainWindow {
 		JOptionPane.showMessageDialog(frame, about);
 	}
 	public void setContentPane(JPanel panel) {
+
 		frame.setContentPane(panel);
 		frame.pack();
 	}
+	
 	public int getWidth() {
 		return width;
 	}

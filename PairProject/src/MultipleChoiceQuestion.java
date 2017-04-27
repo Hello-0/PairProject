@@ -149,14 +149,8 @@ public class MultipleChoiceQuestion extends Question {
 		for (JButton button : answerBs)
 			choicesPanel.add(button);
 		add(choicesPanel);
-		
-		lives = new JLabel("LIVES:");
-		lives.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
-		lives.setForeground(new Color(25, 220, 50));
-		lives.setAlignmentX(Component.CENTER_ALIGNMENT);
-		add(lives);
-		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 16)));
 	}
+	
 	public String getQuestion() {
 		return question;
 	}
