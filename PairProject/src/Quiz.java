@@ -1,34 +1,33 @@
 import java.util.*;
 import java.awt.*;
-
 import javax.swing.*;
+
 public class Quiz {
 	MainWindow window;
 	Player player;
 	int questionNum;
 	JLabel livesLabel = new JLabel("LIVES:");
-	ImageIcon x;
-	JLabel livesCounter;
-	int lives;
+	JLabel life;
 	ArrayList<MultipleChoiceQuestion> mcQuestions;
 	ArrayList<Question> specQuestions, questions;
+	
 	public Quiz(MainWindow window, Player player) {
 		this.window = window;
 		this.player = player;
 		
 		livesLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
-		livesLabel.setForeground(new java.awt.Color(25, 220, 50));
-		
-		x = new ImageIcon("res/x.png");
-		Image img = x.getImage().getScaledInstance(50,50, java.awt.Image.SCALE_SMOOTH);
-		livesCounter.setIcon(new ImageIcon(img));
+		livesLabel.setForeground(Color.YELLOW);
 
+		life = new JLabel(Integer.toString(player.getLives()));
+		life.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
+		life.setForeground(new java.awt.Color(25, 220, 50));
 		
 		questions = new ArrayList<Question>();
 		mcQuestions = new ArrayList<MultipleChoiceQuestion>();
 		specQuestions = new ArrayList<Question>();
 		addQuestions();
 	}
+	
 	private void addQuestions() {
 		MultipleChoiceQuestion mc1 = new MultipleChoiceQuestion(window, this, 1, "How many seconds in a year?", "31536000", "12", "60", "1", "b");
 		mc1.createPanel();
@@ -56,14 +55,18 @@ public class Quiz {
 	public void start() {
 		questionNum = 0;
 		livesLabel.setAlignmentX(SwingConstants.LEFT);
+	//	questions.get(questionNum).setLayout(new FlowLayout());
 		questions.get(questionNum).add(livesLabel);
-		questions.get(questionNum).add(livesCounter);
+		questions.get(questionNum).add(life);
+		
 		window.setContentPane(questions.get(questionNum));
 
 	}
 	public void nextQuestion() {
 		try {
 			questionNum++;
+			questions.get(questionNum).add(livesLabel);
+			questions.get(questionNum).add(life);
 			window.setContentPane(questions.get(questionNum));
 			
 		} catch (Exception e) {

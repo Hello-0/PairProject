@@ -116,7 +116,7 @@ public class MultipleChoiceQuestion extends Question {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 			//fix questionNum alignment FUCK THIS SHIT
-		JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel p = new JPanel();
 		p.setPreferredSize(new Dimension(window.getWidth(), 8));
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));

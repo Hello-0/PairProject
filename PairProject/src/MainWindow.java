@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.*;
 public class MainWindow {
@@ -32,7 +33,7 @@ public class MainWindow {
 		JOptionPane.showMessageDialog(frame, about);
 	}
 	public void setContentPane(JPanel panel) {
-
+		
 		frame.setContentPane(panel);
 		frame.pack();
 	}
