@@ -1,11 +1,10 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
-	JLabel questionL,lives;
+	JLabel questionL, livesLabel;
 	JButton aB, bB, cB, dB;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
@@ -80,6 +79,8 @@ public class MultipleChoiceQuestion extends Question {
 					loseLife();
 					if (lose())
 						quiz.setLosePanel();
+					else
+						addLivesLabel(true);
 				}
 				public void mouseEntered(MouseEvent e) {
 					setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -118,6 +119,7 @@ public class MultipleChoiceQuestion extends Question {
 			//fix questionNum alignment FUCK THIS SHIT
 		JPanel p = new JPanel();
 		p.setPreferredSize(new Dimension(window.getWidth(), 8));
+		//p.setBackground(Color.WHITE);
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionNum.setForeground(Color.BLUE);
@@ -149,8 +151,23 @@ public class MultipleChoiceQuestion extends Question {
 		for (JButton button : answerBs)
 			choicesPanel.add(button);
 		add(choicesPanel);
+		
+		addLivesLabel(false);
 	}
-	
+	public void removeLivesLabel() {
+		removeAll();
+		createPanel();
+		window.setContentPane(this);
+	}
+	public void addLivesLabel(boolean lostLife) {
+		if (lostLife)
+			removeLivesLabel();
+		livesLabel = new JLabel("LIVES: " + quiz.getPlayer().getLives());
+		livesLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
+		livesLabel.setForeground(Color.YELLOW);
+		livesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(livesLabel);
+	}
 	public String getQuestion() {
 		return question;
 	}

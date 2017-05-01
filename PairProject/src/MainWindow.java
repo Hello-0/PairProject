@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
+import java.awt.*;
 import javax.swing.*;
 public class MainWindow {
 	final int DEFAULT_WIDTH = 850, DEFAULT_HEIGHT = 600;
@@ -29,15 +27,14 @@ public class MainWindow {
 		quiz.start();
 	}
 	public void showAbout() {
-		String about = "we can fuck around with this later";
+		String about = "Zhi Wei Wang ..." +
+				"\n\nKenton Wong ...";
 		JOptionPane.showMessageDialog(frame, about);
 	}
 	public void setContentPane(JPanel panel) {
-		
 		frame.setContentPane(panel);
 		frame.pack();
 	}
-	
 	public int getWidth() {
 		return width;
 	}
