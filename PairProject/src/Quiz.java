@@ -23,7 +23,7 @@ public class Quiz {
 				"8", Integer.toString(player.getName().length()), "I forget my name", "Is this a trick question?", "a");
 		MultipleChoiceQuestion mc4 = new MultipleChoiceQuestion(window, this, 4, "See, oh double-you?", "What?", "Ouch", "Moo", "We are twins", "c");
 		MultipleChoiceQuestion mc5 = new MultipleChoiceQuestion(window, this, 5, "How many people in this class?", "11", "Do computers count?", "HOW MANY IN YOURS", "Depends on the class", "d");
-		MultipleChoiceQuestion mc6 = new MultipleChoiceQuestion(window, this, 6, "Ring ring ring", "Hello?", "omg iz that a landline", "STRANGER DANGER", "I don't even have a phone", "b");
+		MultipleChoiceQuestion mc6 = new MultipleChoiceQuestion(window, this, 6, "Ring ring ring", "Hello?", "Banana Phone", "STRANGER DANGER", "I don't even have a phone", "b");
 		
 		mcQuestions.add(mc1);
 		mcQuestions.add(mc2);

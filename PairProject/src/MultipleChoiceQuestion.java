@@ -1,11 +1,14 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
 	JLabel questionL, livesLabel;
-	JButton aB, bB, cB, dB;
+	ImageIcon skip;
+	JButton aB, bB, cB, dB,skips;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
 		super(window, quiz, questionNum);
@@ -94,7 +97,6 @@ public class MultipleChoiceQuestion extends Question {
 	}
 	public void createPanel() {
 		JLabel questionNum;
-		JLabel x = new JLabel("res/x.png");
 		ArrayList<JButton> answerBs = new ArrayList<JButton>();
 		JPanel choicesPanel;
 		
@@ -117,17 +119,21 @@ public class MultipleChoiceQuestion extends Question {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 			//fix questionNum alignment FUCK THIS SHIT
-		JPanel p = new JPanel();
-		p.setPreferredSize(new Dimension(window.getWidth(), 8));
+		JPanel pane = new JPanel();
+		pane.setBackground(Color.WHITE);
+//		p.setPreferredSize(new Dimension(window.getWidth(), 8));
 		//p.setBackground(Color.WHITE);
+		livesLabel = new JLabel("LIVES: " + quiz.getPlayer().getLives());
+		livesLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
+		livesLabel.setForeground(Color.GREEN);
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionNum.setForeground(Color.BLUE);
 		//questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
-		p.setAlignmentX(Component.LEFT_ALIGNMENT);
+//		p.setAlignmentX(Component.LEFT_ALIGNMENT);
 		//add(questionNum);
-		p.add(questionNum);
-		add(p);
+//		p.add(questionNum);
+//		add(p);
 		
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
 		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
@@ -146,13 +152,56 @@ public class MultipleChoiceQuestion extends Question {
 			button.setPreferredSize(new Dimension(window.getWidth() * 2 / 5, window.getHeight() / 8));
 		}
 		
-		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
-		choicesPanel.setBackground(Color.WHITE);
-		for (JButton button : answerBs)
-			choicesPanel.add(button);
-		add(choicesPanel);
-		
-		addLivesLabel(false);
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(pane);
+        pane.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(questionL, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(aB, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bB, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dB, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))))
+                .addGap(84, 84, 84))
+                .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                 .addComponent(livesLabel, javax.swing.GroupLayout.PREFERRED_SIZE,300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+            		 .addComponent(questionL, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                     .addGap(33, 33, 33)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aB, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dB, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bB, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cB, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(livesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+             
+                
+        );
+        
+//		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
+//		choicesPanel.setBackground(Color.WHITE);
+//		for (JButton button : answerBs)
+//			choicesPanel.add(button);
+//		add(choicesPanel);
+		add(pane);
+	//	addLivesLabel(false);
+	//	addSkip();
 	}
 	public void removeLivesLabel() {
 		removeAll();
@@ -164,10 +213,34 @@ public class MultipleChoiceQuestion extends Question {
 			removeLivesLabel();
 		livesLabel = new JLabel("LIVES: " + quiz.getPlayer().getLives());
 		livesLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 60));
-		livesLabel.setForeground(Color.YELLOW);
+		livesLabel.setForeground(Color.GREEN);
 		livesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(livesLabel);
 	}
+	
+	public void addSkip(){
+		skips = new JButton();
+		skip = new ImageIcon("res/skiparrow (1).png");
+		Image img = skip.getImage().getScaledInstance(125,125, java.awt.Image.SCALE_SMOOTH);
+		skips.setIcon(new ImageIcon(img));
+		skips.setOpaque(false);
+		skips.setBorder(BorderFactory.createEmptyBorder());
+		skips.addMouseListener(new MouseListener() {
+			public void mouseClicked(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {
+				skips.setPreferredSize(new Dimension(350,350));
+				skips.setToolTipText("Skip");
+				//repaint();
+			}
+			public void mouseExited(MouseEvent e) {
+				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+			}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+		});
+		add(skips);
+	}
+
 	public String getQuestion() {
 		return question;
 	}
