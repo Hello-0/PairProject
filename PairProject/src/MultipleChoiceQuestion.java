@@ -98,7 +98,7 @@ public class MultipleChoiceQuestion extends Question {
 	public void createPanel() {
 		JLabel questionNum;
 		ArrayList<JButton> answerBs = new ArrayList<JButton>();
-		JPanel choicesPanel;
+	//	JPanel choicesPanel;
 		
 		if (!answerInputted) {
 			if (!choicesInputted) {
@@ -159,7 +159,7 @@ public class MultipleChoiceQuestion extends Question {
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(questionL, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                    .addComponent(questionL, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(aB, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,15 +168,20 @@ public class MultipleChoiceQuestion extends Question {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dB, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))))
-                .addGap(84, 84, 84))
-                .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                 .addComponent(livesLabel, javax.swing.GroupLayout.PREFERRED_SIZE,300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                     .addGap(84, 84, 84))
+             .addGroup(layout.createSequentialGroup()
+            		 .addGap(22, 22, 22)
+              //  		.addComponent(questionNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                		.addComponent(livesLabel, javax.swing.GroupLayout.PREFERRED_SIZE,300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                 
                 
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+            //		  .addGap(27, 27, 27)
+             //       .addComponent(questionNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             		 .addComponent(questionL, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                      .addGap(33, 33, 33)
                 .addGap(27, 27, 27)
@@ -190,8 +195,6 @@ public class MultipleChoiceQuestion extends Question {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(livesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
-             
-                
         );
         
 //		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
