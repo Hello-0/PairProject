@@ -1,12 +1,10 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
-
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
-	JLabel questionL, livesLabel;
+	JLabel questionLabel, livesLabel;
 	ImageIcon skip;
 	JButton aB, bB, cB, dB,skips;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
@@ -31,8 +29,8 @@ public class MultipleChoiceQuestion extends Question {
 	}
 	public void setQuestion(String question) {
 		this.question = question;
-		questionL = new JLabel(question);
-		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		questionLabel = new JLabel(question);
+		questionLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 	}
 	public void setChoices(String a, String b, String c, String d) {
 		this.a = a;
@@ -136,10 +134,10 @@ public class MultipleChoiceQuestion extends Question {
 //		add(p);
 		
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
-		questionL.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
-		questionL.setForeground(Color.BLUE);
-		questionL.setAlignmentX(Component.CENTER_ALIGNMENT);
-		add(questionL);
+		questionLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		questionLabel.setForeground(Color.BLUE);
+		questionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(questionLabel);
 		
 		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 6)));
 		answerBs.add(aB);
@@ -159,7 +157,7 @@ public class MultipleChoiceQuestion extends Question {
             .addGroup(layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(questionL, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .addComponent(questionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(aB, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,8 +171,6 @@ public class MultipleChoiceQuestion extends Question {
             		 .addGap(22, 22, 22)
               //  		.addComponent(questionNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 		.addComponent(livesLabel, javax.swing.GroupLayout.PREFERRED_SIZE,300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                 
-                
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +178,7 @@ public class MultipleChoiceQuestion extends Question {
             //		  .addGap(27, 27, 27)
              //       .addComponent(questionNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            		 .addComponent(questionL, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+            		 .addComponent(questionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                      .addGap(33, 33, 33)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +192,6 @@ public class MultipleChoiceQuestion extends Question {
                 .addComponent(livesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-        
 //		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
 //		choicesPanel.setBackground(Color.WHITE);
 //		for (JButton button : answerBs)
@@ -220,7 +215,6 @@ public class MultipleChoiceQuestion extends Question {
 		livesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(livesLabel);
 	}
-	
 	public void addSkip(){
 		skips = new JButton();
 		skip = new ImageIcon("res/skiparrow (1).png");
@@ -243,7 +237,6 @@ public class MultipleChoiceQuestion extends Question {
 		});
 		add(skips);
 	}
-
 	public String getQuestion() {
 		return question;
 	}
