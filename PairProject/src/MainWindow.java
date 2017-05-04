@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 public class MainWindow {
-	final int DEFAULT_WIDTH = 850, DEFAULT_HEIGHT = 600;
+	final int DEFAULT_WIDTH = 825, DEFAULT_HEIGHT = 600;
 	int width, height;
 	JFrame frame;
 	Menu menu;
@@ -12,6 +12,7 @@ public class MainWindow {
 		height = DEFAULT_HEIGHT;
 		
 		frame = new JFrame("Impossible Quiz");
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menu = new Menu(this);

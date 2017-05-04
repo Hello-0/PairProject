@@ -19,6 +19,7 @@ public class Menu extends JPanel implements ActionListener {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
 		
+		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
 		title = new JLabel("Impossible Quiz");
 		title.setFont(new Font("Comic Sans MS", Font.PLAIN, 100));
 		title.setAlignmentX(Component.CENTER_ALIGNMENT);
