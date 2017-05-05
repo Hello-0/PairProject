@@ -127,7 +127,7 @@ public class MultipleChoiceQuestion extends Question {
 		
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
-		questionNum.setForeground(Color.BLUE);
+		questionNum.setForeground(Color.RED);
 		
 		skips = new JButton();
 		skip = new ImageIcon("res/skiparrow.png");
