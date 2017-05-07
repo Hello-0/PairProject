@@ -1,11 +1,14 @@
 import java.util.*;
 import java.awt.*;
+
 import javax.swing.*;
 public class Quiz {
 	MainWindow window;
 	Player player;
 	int questionNum;
-	//JLabel life;
+	JLabel lose,win;
+	JButton back, tryagain;
+	ImageIcon loseScreen,winScreen;
 	//ArrayList<MultipleChoiceQuestion> mcQuestions;
 	ArrayList<Question> questions;//specQuestions, ;
 	public Quiz(MainWindow window, Player player) {
@@ -37,7 +40,7 @@ public class Quiz {
 		questions = new ArrayList<Question>();
 		questions.add(mc1);
 		questions.add(mc2);
-		questions.add(sq1);
+	//	questions.add(sq1);
 		questions.add(mc3);
 		questions.add(mc4);
 		questions.add(mc5);
@@ -91,16 +94,61 @@ public class Quiz {
 			setWinPanel();
 		}
 	}
-	private void setWinPanel() {
-		JPanel winPanel = new JPanel();
+	private void setWinPanel() 
+	{
+		JPanel winPanel = new JPanel(null);
 		winPanel.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
-		winPanel.setBackground(Color.BLUE);
+		
+		back = new JButton("Back to Menu");
+		back.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		
+		win = new JLabel();
+		winScreen = new ImageIcon("res/winscreen.png");
+		Image img = winScreen.getImage().getScaledInstance(window.getWidth(),window.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		win.setIcon(new ImageIcon(img));
+
+		winPanel.add(win);
+		win.setBounds(0,0,window.getWidth(),window.getHeight());
+
+		win.add(back);
+		back.setBounds(50, 500, 250, 50);
+		
 		window.setContentPane(winPanel);
 	}
-	public void setLosePanel() {
-		JPanel losePanel = new JPanel();
+	public void setLosePanel() 
+	{
+		JPanel losePanel = new JPanel(null);
 		losePanel.setPreferredSize(new Dimension(window.getWidth(), window.getHeight()));
-		losePanel.setBackground(Color.RED);
+		
+		tryagain = new JButton("Try Again!");
+		tryagain.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+		tryagain.setForeground(Color.RED);
+		tryagain.setBorderPainted(false); 
+        tryagain.setContentAreaFilled(false); 
+        tryagain.setFocusPainted(false); 
+        tryagain.setOpaque(false);
+        
+        back = new JButton("Give Up...");
+		back.setFont(new Font("Comic Sans MS", Font.PLAIN, 45));
+		back.setForeground(Color.CYAN);
+		back.setBorderPainted(false); 
+        back.setContentAreaFilled(false); 
+        back.setFocusPainted(false); 
+        back.setOpaque(false);
+		
+		lose = new JLabel();
+		loseScreen = new ImageIcon("res/losescreen.png");
+		Image img = loseScreen.getImage().getScaledInstance(window.getWidth(),window.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lose.setIcon(new ImageIcon(img));
+		
+		losePanel.add(lose);
+		lose.setBounds(0,0,window.getWidth(),window.getHeight());
+		
+		lose.add(tryagain);
+		tryagain.setBounds(25, 515, 265, 60);
+		lose.add(back);
+		back.setBounds(535, 510, 265, 60);
+		
 		window.setContentPane(losePanel);
 	}
 	public Player getPlayer() {

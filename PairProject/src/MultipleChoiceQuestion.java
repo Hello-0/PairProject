@@ -142,7 +142,7 @@ public class MultipleChoiceQuestion extends Question {
 //		add(p);
 		
 //		add(Box.createRigidArea(new Dimension(window.getWidth(), window.getHeight() / 12)));
-		questionLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
+		questionLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 40));
 		questionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		questionLabel.setForeground(Color.BLUE);
 //		questionLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
