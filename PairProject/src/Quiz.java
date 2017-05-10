@@ -1,6 +1,5 @@
 import java.util.*;
 import java.awt.*;
-
 import javax.swing.*;
 public class Quiz {
 	MainWindow window;
@@ -38,9 +37,9 @@ public class Quiz {
 		questions.add(sq1);
 		*/
 		questions = new ArrayList<Question>();
-		questions.add(mc1);
-		questions.add(mc2);
-	//	questions.add(sq1);
+	//	questions.add(mc1);
+	//	questions.add(mc2);
+		questions.add(sq1);
 		questions.add(mc3);
 		questions.add(mc4);
 		questions.add(mc5);

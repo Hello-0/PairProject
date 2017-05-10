@@ -45,6 +45,14 @@ public class Menu extends JPanel implements ActionListener {
 		nameField.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		nameField.setMaximumSize(new Dimension(window.getWidth() / 2, 24));
 		nameField.setHorizontalAlignment(SwingConstants.CENTER);
+		nameField.addKeyListener(new KeyListener() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					startQuiz();
+			}
+			public void keyReleased(KeyEvent e) {}
+			public void keyTyped(KeyEvent e) {}
+		});
 		add(nameField);
 		
 		gbc = new GridBagConstraints();
@@ -124,10 +132,13 @@ public class Menu extends JPanel implements ActionListener {
 			color -= 0x00000F;
 		return color;
 	}
+	private void startQuiz() {
+		window.startQuiz(nameField.getText());
+	}
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionCommand()) {
-			case "Start!":	window.startQuiz(nameField.getText());	break;
-			case "About?":	window.showAbout();						break;
+			case "Start!":	startQuiz();		break;
+			case "About?":	window.showAbout();	break;
 		}
 	}
 }
