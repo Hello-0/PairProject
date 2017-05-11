@@ -5,8 +5,8 @@ import javax.swing.*;
 public class MultipleChoiceQuestion extends Question {
 	String question, a, b, c, d, answer;
 	JLabel questionLabel, livesLabel;
-	ImageIcon skip;
-	JButton aB, bB, cB, dB,skips;
+	//ImageIcon skip;
+	JButton aB, bB, cB, dB;//,skips;
 	boolean questionInputted = false, choicesInputted = false, answerInputted = false;
 	public MultipleChoiceQuestion(MainWindow window, Quiz quiz, int questionNum) {
 		super(window, quiz, questionNum);
@@ -128,13 +128,14 @@ public class MultipleChoiceQuestion extends Question {
 		questionNum = new JLabel(Integer.toString(this.questionNum) + ".");
 		questionNum.setFont(new Font("Comic Sans MS", Font.PLAIN, 48));
 		questionNum.setForeground(Color.RED);
-		
+		/**
 		skips = new JButton();
 		skip = new ImageIcon("res/skiparrow.png");
 		Image img = skip.getImage().getScaledInstance(125,125, java.awt.Image.SCALE_SMOOTH);
 		skips.setIcon(new ImageIcon(img));
 		skips.setOpaque(false);
 		skips.setBorder(BorderFactory.createEmptyBorder());
+		*/
 		//questionNum.setAlignmentX(Component.LEFT_ALIGNMENT);
 //		p.setAlignmentX(Component.LEFT_ALIGNMENT);
 		//add(questionNum);
@@ -182,8 +183,8 @@ public class MultipleChoiceQuestion extends Question {
             		 	.addGap(22, 22, 22)
                 		.addComponent(livesLabel, javax.swing.GroupLayout.PREFERRED_SIZE,300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 		 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                		.addComponent(skips, javax.swing.GroupLayout.PREFERRED_SIZE,100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+                		//.addComponent(skips, javax.swing.GroupLayout.PREFERRED_SIZE,100, javax.swing.GroupLayout.PREFERRED_SIZE))
+        ));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -203,17 +204,10 @@ public class MultipleChoiceQuestion extends Question {
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(livesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
       
-                .addComponent(skips, javax.swing.GroupLayout.PREFERRED_SIZE,100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                //.addComponent(skips, javax.swing.GroupLayout.PREFERRED_SIZE,100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)))
         );
-//		choicesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
-//		choicesPanel.setBackground(Color.WHITE);
-//		for (JButton button : answerBs)
-//			choicesPanel.add(button);
-//		add(choicesPanel);
 		add(pane);
-	//	addLivesLabel(false);
-	//	addSkip();
 	}
 	public void removeLivesLabel() {
 		removeAll();
@@ -229,28 +223,6 @@ public class MultipleChoiceQuestion extends Question {
 		livesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(livesLabel);
 	}
-//	public void addSkip(){
-//		skips = new JButton();
-//		skip = new ImageIcon("res/skiparrow.png");
-//		Image img = skip.getImage().getScaledInstance(125,125, java.awt.Image.SCALE_SMOOTH);
-//		skips.setIcon(new ImageIcon(img));
-//		skips.setOpaque(false);
-//		skips.setBorder(BorderFactory.createEmptyBorder());
-//		skips.addMouseListener(new MouseListener() {
-//			public void mouseClicked(MouseEvent e) {}
-//			public void mouseEntered(MouseEvent e) {
-//				skips.setPreferredSize(new Dimension(350,350));
-//				skips.setToolTipText("Skip");
-//				//repaint();
-//			}
-//			public void mouseExited(MouseEvent e) {
-//				setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-//			}
-//			public void mousePressed(MouseEvent e) {}
-//			public void mouseReleased(MouseEvent e) {}
-//		});
-//		add(skips);
-//	}
 	public String getQuestion() {
 		return question;
 	}
